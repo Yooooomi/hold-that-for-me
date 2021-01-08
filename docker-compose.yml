@@ -17,9 +17,9 @@ services:
       context: ./client
       args:
         ENV: production
+        REACT_APP_API_URL: https://htfm.example.com/api
     ports:
       - "3000:3000"
     environment:
       ENV: production
       REACT_APP_API_URL: https://htfm.example.com/api
-
