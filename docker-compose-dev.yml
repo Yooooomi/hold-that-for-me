@@ -12,6 +12,7 @@ services:
       - "8081:8081"
 
   client:
+    entrypoint: "yarn start"
     stdin_open: true
     ports:
       - "3000:3000"

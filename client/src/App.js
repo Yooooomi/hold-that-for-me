@@ -1,9 +1,8 @@
-// import s from './App.module.css';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 import './App.css';
 
 let inter = null;
-const api = process.env.REACT_APP_API || 'http://localhost:8080';
+const api = process.env.REACT_APP_API_URL || 'http://localhost:8080';
 
 function App() {
   const [link, setLink] = useState('');
@@ -19,7 +18,7 @@ function App() {
     inter = setInterval(() => {
       setCopied(false);
     }, 400);
-  }, [inter, quicklink]);
+  }, [quicklink]);
 
   const createLink = useCallback(async () => {
     const res = await fetch(`${api}/link`, {

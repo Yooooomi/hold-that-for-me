@@ -5,15 +5,21 @@ services:
     build: ./server
     restart: unless-stopped
     ports:
-      - "8991:8081"
+      - "8081:8081"
     environment:
+      STAGE: production
       PORT: 8081
       CORS: all
       FORCE_COLOR: 1
 
   client:
-    build: ./client
+    build:
+      context: ./client
+      args:
+        ENV: production
     ports:
-      - "8992:3000"
+      - "3000:3000"
     environment:
+      ENV: production
       REACT_APP_API_URL: https://htfm.example.com/api
+
