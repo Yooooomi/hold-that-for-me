@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  server:
+    environment:
+      CORS: https://htfm.example.com/api
+      STAGE: production
+      COOKIES_DOMAIN: domain.com
+
+  client:
+    entrypoint: npx serve -s build/ -l 3000
+    build:
+      args:
+        ENV: production
+        REACT_APP_API_URL: https://htfm.example.com/api
+
+  database:
+    volumes:
+      - ./db_data:/var/lib/postgresql/data

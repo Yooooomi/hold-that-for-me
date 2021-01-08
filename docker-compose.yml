@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  server:
+    build: ./server
+    restart: unless-stopped
+    ports:
+      - "8991:8081"
+    environment:
+      PORT: 8081
+      CORS: all
+      FORCE_COLOR: 1
+
+  client:
+    build: ./client
+    ports:
+      - "8992:3000"
+    environment:
+      REACT_APP_API_URL: https://htfm.example.com/api
